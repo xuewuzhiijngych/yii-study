@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<button bindgetuserinfo="login" open-type="getUserInfo">获取授权</button>
+
+<hr/>
+
+<button open-type="getPhoneNumber" bindgetphonenumber="phone">获取手机号</button>
