@@ -8,6 +8,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
+use frontend\models\UploadForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
@@ -15,6 +16,7 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 
 /**
  * Site controller
@@ -75,8 +77,20 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $url = Yii::$app->storage->storage("/frontend/8.jpg");
+
+        $this->layout = false;
+        $model = new UploadForm();
+        if (Yii::$app->request->isPost) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($model->upload()) {
+                return;
+            }
+        }
+        
+        return $this->render('/upload/index', compact('model', 'url'));
     }
+
 
     /**
      * Logs in a user.
