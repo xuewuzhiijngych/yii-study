@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use common\models\LoginForm;
 use frontend\models\ContactForm;
 use frontend\models\PasswordResetRequestForm;
+use frontend\models\ProjectAdmin;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -77,8 +78,18 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $url = Yii::$app->storage->storage("/frontend/8.jpg");
+        $model = new ProjectAdmin();
 
+        $res = ProjectAdmin::find()->all();
+        foreach ($res as $k => $v) {
+            dd($v);
+        }
+
+//        $res = $model->findOne(1);
+        $res = $res->username;
+        dd($res);
+
+        $url = Yii::$app->storage->storage("/frontend/8.jpg");
         $this->layout = false;
         $model = new UploadForm();
         if (Yii::$app->request->isPost) {
@@ -87,7 +98,7 @@ class SiteController extends Controller
                 return;
             }
         }
-        
+
         return $this->render('/upload/index', compact('model', 'url'));
     }
 

@@ -1,5 +1,8 @@
 <?php
 
+use common\components\Storage;
+use common\components\WxappService;
+
 return [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -11,8 +14,24 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+
+        'storage' => [
+            'class' => Storage::className(),
+        ],
+
         'wxapp' => [
-            'class' => 'api\components\WxappService'
+            'class' => WxappService::className(),
+            'appid' => 'wx2631d7e022453fd4',
+            'secret' => 'eda3b430183be78ccaaea222707ee75d',
+            'grant_type' => 'authorization_code',
+        ],
+
+        'db2' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=localhost;dbname=yii2b',
+            'username' => 'root',
+            'password' => 'root',
+            'charset' => 'utf8mb4',
         ],
     ],
 ];

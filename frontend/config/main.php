@@ -36,6 +36,15 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=localhost;dbname=yii2b',
+            'username' => 'root',
+            'password' => 'root',
+            'charset' => 'utf8mb4',
+        ],
+
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,

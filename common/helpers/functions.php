@@ -1,9 +1,10 @@
 <?php
 if (!function_exists('xx')) {
 
-    function dd(array|string $res)
+    function dd($res)
     {
         echo "<pre>";
         \yii\helpers\VarDumper::dump($res);
+        die();
     }
 }

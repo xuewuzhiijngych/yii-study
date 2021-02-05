@@ -1,26 +1,27 @@
 <?php
 
-namespace api\components;
+namespace common\components;
 
 use GuzzleHttp\Client;
+use yii\base\Component;
 
-class WxappService
+class WxappService extends Component
 {
     protected array $data = [];
     protected string $serve_url = 'https://api.weixin.qq.com/sns/jscode2session?';
 
-    public string $appkey;
+    public string $appid;
     public string $secret;
     public string $grant_type;
 
-    function __construct()
-    {
-        $wxapp = \Yii::$app->params['wxapp'];
-
-        $this->appid = $wxapp['appid'];
-        $this->secret = $wxapp['secret'];
-        $this->grant_type = 'authorization_code';
-    }
+//    function __construct()
+//    {
+//        $wxapp = \Yii::$app->params['wxapp'];
+//
+//        $this->appid = $wxapp['appid'];
+//        $this->secret = $wxapp['secret'];
+//        $this->grant_type = 'authorization_code';
+//    }
 
     /**
      * 微信小程序授权
