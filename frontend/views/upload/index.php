@@ -5,7 +5,7 @@
 <?= $form->field($model, 'imageFile')->fileInput() ?>
 <button>提交</button>
 
-<!--<img src='--><?//= $url ?><!--' alt="">-->
+<img src='<?= $url ?>' alt="">
 
 <?php ActiveForm::end() ?>
 

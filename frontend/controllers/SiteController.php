@@ -78,18 +78,17 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $model = new ProjectAdmin();
-
-        $res = ProjectAdmin::find()->all();
-        foreach ($res as $k => $v) {
-            dd($v);
-        }
+//        $model = new ProjectAdmin();
+//        $res = ProjectAdmin::find()->all();
+//        foreach ($res as $k => $v) {
+//            dd($v);
+//        }
 
 //        $res = $model->findOne(1);
-        $res = $res->username;
-        dd($res);
+//        $res = $res->username;
+//        dd($res);
 
-        $url = Yii::$app->storage->storage("/frontend/8.jpg");
+        $url = Yii::$app->store->storage("http://wiki.cn/uploads/frontend/8.jpg");
         $this->layout = false;
         $model = new UploadForm();
         if (Yii::$app->request->isPost) {

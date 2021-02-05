@@ -15,7 +15,7 @@ return [
             'class' => 'yii\caching\FileCache',
         ],
 
-        'storage' => [
+        'store' => [
             'class' => Storage::className(),
         ],
 
