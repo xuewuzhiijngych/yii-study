@@ -21,7 +21,13 @@ class UploadForm extends Model
     public function upload()
     {
         if ($this->validate()) {
-            $this->imageFile->saveAs(Yii::getAlias('@uploads') . '/frontend/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            chdir(Yii::getAlias('@uploads'));
+            $dir = date('Ymd');
+            $fileName = randStr(16) . rand(100, 999);
+            if (!file_exists($dir)) {
+                mkdir($dir, 0777);
+            }
+            $this->imageFile->saveAs(Yii::getAlias('@uploads') . "/$dir/" . $fileName . '.' . $this->imageFile->extension);
         } else {
             return false;
         }

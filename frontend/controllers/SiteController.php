@@ -5,7 +5,6 @@ namespace frontend\controllers;
 use common\models\LoginForm;
 use frontend\models\ContactForm;
 use frontend\models\PasswordResetRequestForm;
-use frontend\models\ProjectAdmin;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -78,6 +77,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+
 //        $model = new ProjectAdmin();
 //        $res = ProjectAdmin::find()->all();
 //        foreach ($res as $k => $v) {
@@ -88,7 +88,7 @@ class SiteController extends Controller
 //        $res = $res->username;
 //        dd($res);
 
-        $url = Yii::$app->store->storage("http://wiki.cn/uploads/frontend/8.jpg");
+//        $url = Yii::$app->store->storage("http://wiki.cn/uploads/frontend/8.jpg");
         $this->layout = false;
         $model = new UploadForm();
         if (Yii::$app->request->isPost) {
@@ -97,8 +97,7 @@ class SiteController extends Controller
                 return;
             }
         }
-
-        return $this->render('/upload/index', compact('model', 'url'));
+        return $this->render('/upload/index', compact('model'));
     }
 
 
@@ -283,16 +282,4 @@ class SiteController extends Controller
         ]);
     }
 
-
-    public function actionLanguage()
-    {
-        $language = \Yii::$app->request->get('lang');
-        if (isset($language)) {
-            \Yii::$app->session['language'] = $language;
-        }
-        //切换完语言哪来的返回到哪里
-        // $this->goBack(\Yii::$app->request->headers['Referer']);
-
-        return $this->render('language');
-    }
 }
