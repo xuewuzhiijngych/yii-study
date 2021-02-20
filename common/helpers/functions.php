@@ -1,6 +1,5 @@
 <?php
 if (!function_exists('dd')) {
-
     function dd($res)
     {
         echo "<pre>";
@@ -10,7 +9,12 @@ if (!function_exists('dd')) {
 }
 
 if (!function_exists('randStr')) {
-    function randStr($length)
+    /**
+     * 生成随机字符串
+     * @param $length
+     * @return string
+     */
+    function randStr($length): string
     {
         $str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         $len = strlen($str) - 1;
